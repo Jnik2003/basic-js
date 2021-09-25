@@ -12,33 +12,31 @@ import { NotImplementedError } from '../extensions/index.js';
  * For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
  *
  */
-export default function getSumOfDigits( n ) {
-  let res = [];
-  let arr = n.toString().split('').map(Number)
- 
+export default function getSumOfDigits(n) {
+    let res = [];
+    let arr = n.toString().split('').map(Number)
+
     f(arr)
-   return res[0];
+    return res[0];
 
-  function f(arr){ 
-  if(arr.length <= 1){
-      return;
-    }  
-  for(let i = 0; i < arr.length; i++){
-    
-    //console.log(arr)
-    return arr.reduce((accum, item) => {
-      let x = accum + item;
-      //console.log(x)
-      res = x.toString().split('').map(Number)
-      //console.log(res)
-      if(res.length > 1){
-        f(res);
-      }
-      else{
-        return res[0]
-      }
-  })
-  }  
-}
-}
+    function f(arr) {
+        if (arr.length <= 1) {
+            return;
+        }
+        for (let i = 0; i < arr.length; i++) {
 
+            //console.log(arr)
+            return arr.reduce((accum, item) => {
+                let x = accum + item;
+                //console.log(x)
+                res = x.toString().split('').map(Number)
+                //console.log(res)
+                if (res.length > 1) {
+                    f(res);
+                } else {
+                    return res[0]
+                }
+            })
+        }
+    }
+}
